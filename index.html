@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>READY-STEADY-BANG</title>
+    <!-- Custom font 'peepo' expected to be available locally or via OS. -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Title Scene -->
+      <section id="scene-title" class="scene active">
+        <h1 class="title western">BANG!</h1>
+        <div class="arena">
+          <div class="player left">
+            <img class="char" src="idle.png" alt="Player 1" />
+          </div>
+          <div class="center"></div>
+          <div class="player right">
+            <img class="char" src="idle.png" alt="Player 2" />
+          </div>
+        </div>
+        <p class="hint">Space: Start</p>
+      </section>
+
+      <!-- Mode Select Scene -->
+      <section id="scene-mode" class="scene">
+        <h2>Select Mode</h2>
+        <div class="arena">
+          <div class="player left">
+            <img class="char" src="idle.png" alt="Player 1" />
+          </div>
+          <div class="center">
+            <ul id="mode-options" class="menu">
+              <li data-target="1">Single Round (1)</li>
+              <li data-target="3" class="selected">First to 3</li>
+              <li data-target="5">First to 5</li>
+            </ul>
+          </div>
+          <div class="player right">
+            <img class="char" src="idle.png" alt="Player 2" />
+          </div>
+        </div>
+        <p class="hint">↑/↓: Move • Space: Select • Esc: Title</p>
+      </section>
+
+      <!-- Game Scene -->
+      <section id="scene-game" class="scene">
+        <div id="scoreboard">
+          <div class="score p1">P1: <span id="score-p1">0</span></div>
+          <div class="target">Target: <span id="target-score">3</span></div>
+          <div class="score p2">P2: <span id="score-p2">0</span></div>
+        </div>
+
+        <div id="arena">
+          <div class="player left" id="panel-left">
+            <img id="img-p1" class="char" src="idle.png" alt="Player 1" />
+          </div>
+
+          <div class="center">
+            <div id="center-text" class="center-text" aria-live="polite"></div>
+          </div>
+
+          <div class="player right" id="panel-right">
+            <img id="img-p2" class="char" src="idle.png" alt="Player 2" />
+          </div>
+        </div>
+
+        <div id="miss-overlay" aria-hidden="true"></div>
+
+        <p class="hint">Controls: P1 = Left Ctrl • P2 = Right Ctrl</p>
+      </section>
+
+      <!-- Result Scene -->
+      <section id="scene-result" class="scene">
+        <h2 id="result-title">Results</h2>
+        <div class="results">
+          <div class="player-result">
+              <h3>Player 1</h3>
+            <p>Wins: <span id="res-score-p1">0</span></p>
+            <p>Average reaction: <span id="avg-p1">-</span> ms</p>
+            <p>Best reaction: <span id="best-p1">-</span> ms</p>
+          </div>
+          <div class="player-result">
+              <h3>Player 2</h3>
+            <p>Wins: <span id="res-score-p2">0</span></p>
+            <p>Average reaction: <span id="avg-p2">-</span> ms</p>
+            <p>Best reaction: <span id="best-p2">-</span> ms</p>
+          </div>
+        </div>
+        <p class="hint">Space: Restart • Esc: Title</p>
+      </section>
+    </div>
+
+    <audio id="sfx-ready" src="ready.mp3" preload="auto"></audio>
+    <audio id="sfx-steady" src="steady.mp3" preload="auto"></audio>
+    <audio id="sfx-sign" src="sign.mp3" preload="auto"></audio>
+    <audio id="sfx-bang" src="bang.mp3" preload="auto"></audio>
+    <audio id="sfx-miss" src="miss.mp3" preload="auto"></audio>
+    <script src="game.js"></script>
+  </body>
+  </html>
+
+
